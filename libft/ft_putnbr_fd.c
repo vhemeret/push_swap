@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 23:02:05 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/17 23:52:38 by vahemere         ###   ########.fr       */
+/*   Created: 2021/11/14 20:15:49 by vahemere          #+#    #+#             */
+/*   Updated: 2021/11/14 23:07:24 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#include "libft.h"
 
-/*typedef struct s_list
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	*content;
-	struct s_list *next;
-}				t_list;
-*/
-t_list	_move_swap_a_(t_list *stack_a);
-t_list	_move_swap_b_(t_list *stack_b);
-t_list	_move_push_a_(t_list *stack_a, t_list *stack_b);
-t_list	_move_rotate_(t_list a, t_list b);
-t_list	_move_reverse_rotate(t_list a, t_list b);
+	unsigned int	nb;
 
-#endif
+	if (n < 0)
+	{
+		nb = -n;
+		ft_putchar_fd('-', fd);
+	}
+	else
+		nb = n;
+	if (nb > 9)
+		ft_putnbr_fd(nb / 10, fd);
+	ft_putchar_fd((nb % 10) + 48, fd);
+}

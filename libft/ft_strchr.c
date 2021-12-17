@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 23:02:05 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/17 23:52:38 by vahemere         ###   ########.fr       */
+/*   Created: 2021/10/25 23:11:45 by vahemere          #+#    #+#             */
+/*   Updated: 2021/11/08 19:18:08 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#include "libft.h"
 
-/*typedef struct s_list
+char	*ft_strchr(const char *s, int c)
 {
-	int	*content;
-	struct s_list *next;
-}				t_list;
-*/
-t_list	_move_swap_a_(t_list *stack_a);
-t_list	_move_swap_b_(t_list *stack_b);
-t_list	_move_push_a_(t_list *stack_a, t_list *stack_b);
-t_list	_move_rotate_(t_list a, t_list b);
-t_list	_move_reverse_rotate(t_list a, t_list b);
+	size_t	i;
+	char	*str;
 
-#endif
+	i = -1;
+	str = (char *)s;
+	while (str[++i] != c)
+		if (str[i] == 0)
+			return (NULL);
+	return (&str[i]);
+}

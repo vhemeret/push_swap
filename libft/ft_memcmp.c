@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 23:02:05 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/17 23:52:38 by vahemere         ###   ########.fr       */
+/*   Created: 2021/10/26 01:53:51 by vahemere          #+#    #+#             */
+/*   Updated: 2021/10/26 02:02:18 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#include "libft.h"
 
-/*typedef struct s_list
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int	*content;
-	struct s_list *next;
-}				t_list;
-*/
-t_list	_move_swap_a_(t_list *stack_a);
-t_list	_move_swap_b_(t_list *stack_b);
-t_list	_move_push_a_(t_list *stack_a, t_list *stack_b);
-t_list	_move_rotate_(t_list a, t_list b);
-t_list	_move_reverse_rotate(t_list a, t_list b);
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-#endif
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	if (!n)
+		return (0);
+	n -= 1;
+	while (*str1 == *str2 && n)
+	{
+		str1++;
+		str2++;
+		n--;
+	}
+	return (*str1 - *str2);
+}

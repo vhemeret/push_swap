@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 23:02:05 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/17 23:52:38 by vahemere         ###   ########.fr       */
+/*   Created: 2021/10/12 02:23:38 by vahemere          #+#    #+#             */
+/*   Updated: 2021/11/08 17:19:05 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#include "libft.h"
 
-/*typedef struct s_list
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int	*content;
-	struct s_list *next;
-}				t_list;
-*/
-t_list	_move_swap_a_(t_list *stack_a);
-t_list	_move_swap_b_(t_list *stack_b);
-t_list	_move_push_a_(t_list *stack_a, t_list *stack_b);
-t_list	_move_rotate_(t_list a, t_list b);
-t_list	_move_reverse_rotate(t_list a, t_list b);
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			i;
 
-#endif
+	if (!dest && !src)
+		return (NULL);
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
+	if (d > s)
+		while (n--)
+			d[n] = s[n];
+	else
+	{
+		i = -1;
+		while (++i < n)
+			d[i] = s[i];
+	}
+	return (dest);
+}

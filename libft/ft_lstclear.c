@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 23:02:05 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/17 23:52:38 by vahemere         ###   ########.fr       */
+/*   Created: 2021/11/25 16:00:17 by vahemere          #+#    #+#             */
+/*   Updated: 2021/11/27 00:07:19 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#include "libft.h"
 
-/*typedef struct s_list
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	int	*content;
-	struct s_list *next;
-}				t_list;
-*/
-t_list	_move_swap_a_(t_list *stack_a);
-t_list	_move_swap_b_(t_list *stack_b);
-t_list	_move_push_a_(t_list *stack_a, t_list *stack_b);
-t_list	_move_rotate_(t_list a, t_list b);
-t_list	_move_reverse_rotate(t_list a, t_list b);
+	t_list	*tmp;
+	t_list	*current;
 
-#endif
+	if (*lst)
+	{
+		current = *lst;
+		while (current)
+		{
+			tmp = current;
+			current = current->next;
+			ft_lstdelone(tmp, del);
+		}
+	}
+	*lst = NULL;
+}

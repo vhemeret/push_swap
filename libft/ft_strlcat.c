@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 23:02:05 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/17 23:52:38 by vahemere         ###   ########.fr       */
+/*   Created: 2021/10/25 17:54:18 by vahemere          #+#    #+#             */
+/*   Updated: 2021/11/27 19:49:29 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#include "libft.h"
 
-/*typedef struct s_list
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int	*content;
-	struct s_list *next;
-}				t_list;
-*/
-t_list	_move_swap_a_(t_list *stack_a);
-t_list	_move_swap_b_(t_list *stack_b);
-t_list	_move_push_a_(t_list *stack_a, t_list *stack_b);
-t_list	_move_rotate_(t_list a, t_list b);
-t_list	_move_reverse_rotate(t_list a, t_list b);
+	size_t	i;
+	size_t	j;
 
-#endif
+	i = 0;
+	j = ft_strlen(dst);
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	else if (dstsize >= ft_strlen(dst) + 1)
+	{
+		while (src[i] && i + j < dstsize - 1)
+		{
+			dst[i + j] = src[i];
+			i++;
+		}
+		dst[i + j] = '\0';
+		return (ft_strlen(src) + j);
+	}
+	return (ft_strlen(src) + dstsize);
+}

@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 23:17:45 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/17 23:37:04 by vahemere         ###   ########.fr       */
+/*   Created: 2021/11/25 16:50:02 by vahemere          #+#    #+#             */
+/*   Updated: 2021/11/27 19:15:47 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_list	_move_swap_a_(t_list *stack_a)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	tmp;
+	t_list	*tmp;
+	t_list	*current;
+	t_list	*new;
 
-	tmp = stack_a->content;
-	stack_a->content = stack_a->next->content;
-	stack_a->next->content = tmp;
-	return (stack_a);
-}
-
-t_list	_move_swap_b_(t_list *stack_b)
-{
-	int	tmp;
-
-	tmp = stack_b->content;
-	stack_b->content = stack_b->next->content;
-	stack_b->next->content = tmp;
-	return (stack_b);
+	current = NULL;
+	new = NULL;
+	if (!lst || !f)
+		return (NULL);
+	current = lst;
+	while (current)
+	{
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
+		{
+			ft_lstclear(&lst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new, tmp);
+		current = current->next;
+	}
+	return (new);
 }

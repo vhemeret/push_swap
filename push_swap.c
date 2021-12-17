@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 23:02:05 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/17 23:52:38 by vahemere         ###   ########.fr       */
+/*   Created: 2021/12/17 21:41:15 by vahemere          #+#    #+#             */
+/*   Updated: 2021/12/17 23:53:40 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+//#include "push_swap.h"
+#include "libft/libft.h"
 
-/*typedef struct s_list
+int	_check_arg_(int ac, char **av)
 {
-	int	*content;
-	struct s_list *next;
-}				t_list;
-*/
-t_list	_move_swap_a_(t_list *stack_a);
-t_list	_move_swap_b_(t_list *stack_b);
-t_list	_move_push_a_(t_list *stack_a, t_list *stack_b);
-t_list	_move_rotate_(t_list a, t_list b);
-t_list	_move_reverse_rotate(t_list a, t_list b);
+	int i;
+	int j;
 
-#endif
+	i = 0;
+	while (++i < ac)
+	{
+		j = -1;
+		while (av[i][++j])
+			if (av[i][j] < '0' || av[i][j] > '9')
+				return (0);
+	}
+	return (1);
+}
+
+#include <stdio.h>
+int main(int ac, char **av)
+{
+	if (ac <= 1 || _check_arg_(ac, av))
+		return (0);
+	return (0);
+}
