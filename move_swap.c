@@ -6,13 +6,14 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 23:17:45 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/17 23:37:04 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/20 00:27:15 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "push_swap.h"
 
-t_list	_move_swap_a_(t_list *stack_a)
+t_list	*_move_swap_a_(t_list *stack_a)
 {
 	int	tmp;
 
@@ -22,7 +23,7 @@ t_list	_move_swap_a_(t_list *stack_a)
 	return (stack_a);
 }
 
-t_list	_move_swap_b_(t_list *stack_b)
+t_list	*_move_swap_b_(t_list *stack_b)
 {
 	int	tmp;
 

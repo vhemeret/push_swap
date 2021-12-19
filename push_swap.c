@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 21:41:15 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/19 16:06:11 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/20 00:25:30 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ t_list	*__create_list__(int nb_elem, char **elem)
 	i = 1;
 	while (++i < nb_elem)
 	{
-		tmp = ft_lstnew(elem[i]);
+		nb = ft_atoi(elem[i]);
+		tmp = ft_lstnew(&nb);
 		ft_lstadd_back(&stack_a, tmp);
 	}
 	return (stack_a);
@@ -57,31 +58,36 @@ void	__print_list__(t_list *stack_a, t_list *stack_b)
 	while ((stack_a && stack_a->content) || (stack_b && stack_b->content))
 	{
 		if (stack_a && stack_a->content)
-			printf("|%i|", stack_a->content);
+		{
+			printf("|%d|", stack_a->content);
+			stack_a = stack_a->next;
+		}
 		else
 			printf("| |");
 		if (stack_b && stack_b->content)
-			printf(" |%i|\n", stack_b->content);
+		{
+			printf(" |%d|\n", stack_b->content);
+			stack_b = stack_b->next;
+		}
 		else
 			printf(" | |\n");
-		stack_a = stack_a->next;
-		stack_b = stack_b->next;
 	}
-	printf("  -   - \n");
-	printf("  A   B \n");
+	printf(" -   - \n");
+	printf(" A   B \n");
 }
 
 int main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	printf("passed\n");
-	if (ac <= 1 || _check_arg_(ac, av))
+	if (ac <= 1 || !_check_arg_(ac, av))
 		return (0);
 	stack_a = __create_list__(ac, av);
 	stack_b = malloc(sizeof(t_list) * (ac - 1));
 	if (!stack_b)
 		return (0);
+	__print_list__(stack_a, stack_b);
+	stack_a = _move_swap_a_(stack_a);
 	__print_list__(stack_a, stack_b);
 	return (0);
 }
