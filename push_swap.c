@@ -6,11 +6,11 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 21:41:15 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/17 23:53:40 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/19 16:06:11 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "push_swap.h"
+#include "push_swap.h"
 #include "libft/libft.h"
 
 int	_check_arg_(int ac, char **av)
@@ -29,10 +29,59 @@ int	_check_arg_(int ac, char **av)
 	return (1);
 }
 
-#include <stdio.h>
+t_list	*__create_list__(int nb_elem, char **elem)
+{
+	t_list *stack_a;
+	t_list *tmp;
+	int i;
+	int nb;
+
+	stack_a = malloc(sizeof(t_list) * (nb_elem - 1));
+	if (!stack_a)
+		return (NULL);
+	nb = ft_atoi(elem[1]);
+	stack_a = ft_lstnew(&nb);
+	i = 1;
+	while (++i < nb_elem)
+	{
+		tmp = ft_lstnew(elem[i]);
+		ft_lstadd_back(&stack_a, tmp);
+	}
+	return (stack_a);
+}
+
+void	__print_list__(t_list *stack_a, t_list *stack_b)
+{
+	if (!stack_a || !stack_b)
+		return ;
+	while ((stack_a && stack_a->content) || (stack_b && stack_b->content))
+	{
+		if (stack_a && stack_a->content)
+			printf("|%i|", stack_a->content);
+		else
+			printf("| |");
+		if (stack_b && stack_b->content)
+			printf(" |%i|\n", stack_b->content);
+		else
+			printf(" | |\n");
+		stack_a = stack_a->next;
+		stack_b = stack_b->next;
+	}
+	printf("  -   - \n");
+	printf("  A   B \n");
+}
+
 int main(int ac, char **av)
 {
+	t_list	*stack_a;
+	t_list	*stack_b;
+	printf("passed\n");
 	if (ac <= 1 || _check_arg_(ac, av))
 		return (0);
+	stack_a = __create_list__(ac, av);
+	stack_b = malloc(sizeof(t_list) * (ac - 1));
+	if (!stack_b)
+		return (0);
+	__print_list__(stack_a, stack_b);
 	return (0);
 }

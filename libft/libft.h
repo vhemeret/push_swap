@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 00:25:25 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/17 23:51:57 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/19 15:56:27 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct s_list
 {
-	int	*content;
+	int	content;
 	struct s_list	*next;
 }						t_list;
 
