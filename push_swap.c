@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 21:41:15 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/20 00:25:30 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/20 16:48:13 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ void	__print_list__(t_list *stack_a, t_list *stack_b)
 	{
 		if (stack_a && stack_a->content)
 		{
-			printf("|%d|", stack_a->content);
+			printf("|%i|", stack_a->content);
 			stack_a = stack_a->next;
 		}
 		else
 			printf("| |");
 		if (stack_b && stack_b->content)
 		{
-			printf(" |%d|\n", stack_b->content);
+			printf(" |%i|\n", stack_b->content);
 			stack_b = stack_b->next;
 		}
 		else
@@ -87,7 +87,11 @@ int main(int ac, char **av)
 	if (!stack_b)
 		return (0);
 	__print_list__(stack_a, stack_b);
-	stack_a = _move_swap_a_(stack_a);
+	printf("\n***SWAP A***\n\n");
+	_move_swap_a_(stack_a);
+	__print_list__(stack_a, stack_b);
+	printf("\n***MOVE B***\n\n");
+	_move_push_b_(&stack_a, &stack_b);
 	__print_list__(stack_a, stack_b);
 	return (0);
 }
