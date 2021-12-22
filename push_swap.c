@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 21:41:15 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/21 18:50:36 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/22 14:49:16 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_list	*__create_list__(int nb_elem, char **elem)
 
 void	__print_list__(t_list *stack_a, t_list *stack_b)
 {
-	if (!stack_a || !stack_b)
+	if (!stack_a)
 		return ;
 	while ((stack_a && stack_a->content) || (stack_b && stack_b->content))
 	{
@@ -79,22 +79,22 @@ void	__print_list__(t_list *stack_a, t_list *stack_b)
 int main(int ac, char **av)
 {
 	t_list	*stack_a;
-	t_list	*stack_b;
+	t_list	*stack_b = NULL;
 	if (ac <= 1 || !_check_arg_(ac, av))
 		return (0);
 	stack_a = __create_list__(ac, av);
-	stack_b = malloc(sizeof(t_list) * (ac - 1));
-	if (!stack_b)
-		return (0);
+	//stack_b = malloc(sizeof(t_list) * (ac - 1));
+	//if (!stack_b)
+		//return (0);
 	__print_list__(stack_a, stack_b);
 	printf("\n***SWAP A***\n\n");
 	_move_swap_x_(stack_a);
 	__print_list__(stack_a, stack_b);
 	printf("\n***MOVE B***\n\n");
-	_move_push_x_(&stack_a, stack_b);
+	_move_push_x_(&stack_a, &stack_b);
 	__print_list__(stack_a, stack_b);
 	printf("\n***MOVE A***\n\n");
-	_move_push_a_(&stack_b, stack_a);
+	_move_push_x_(&stack_b, &stack_a);
 	__print_list__(stack_a, stack_b);
 	return (0);
 }
