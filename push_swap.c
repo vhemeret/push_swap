@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 21:41:15 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/20 16:48:13 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/21 18:50:36 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,13 @@ int main(int ac, char **av)
 		return (0);
 	__print_list__(stack_a, stack_b);
 	printf("\n***SWAP A***\n\n");
-	_move_swap_a_(stack_a);
+	_move_swap_x_(stack_a);
 	__print_list__(stack_a, stack_b);
 	printf("\n***MOVE B***\n\n");
-	_move_push_b_(&stack_a, &stack_b);
+	_move_push_x_(&stack_a, stack_b);
+	__print_list__(stack_a, stack_b);
+	printf("\n***MOVE A***\n\n");
+	_move_push_a_(&stack_b, stack_a);
 	__print_list__(stack_a, stack_b);
 	return (0);
 }
