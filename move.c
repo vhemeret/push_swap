@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 23:17:45 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/24 00:16:07 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/26 14:26:54 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_list  *_move_push_x_(t_list **stack_to_move, t_list **stack_x)
 {
 	t_list	*tmp;
 
-	if (!*stack_to_move || !(*stack_to_move)->next)
+	if (!*stack_to_move)
 		return (NULL);
 	else
 	{
@@ -65,6 +65,5 @@ t_list	*_move_reverse_rotate_x_(t_list **stack_x)
 	new = ft_lstnew(&tmp_list->content);
 	ft_lstadd_front(stack_x, new);
 	*stack_x = _lstdelast_(*stack_x);
-	_freedel_(tmp_list);
 	return (*stack_x);
 }
