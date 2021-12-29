@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 19:52:38 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/26 14:26:52 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/29 23:52:41 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,32 @@ void	_freedel_(t_list *to_free)
 		to_free = to_free->next;
 		free(tmp);
 	}
+	tmp = NULL;
+}
 
+int	_freerror_(t_list *to_free)
+{
+	t_list	*tmp;
+
+	if (to_free->next)
+	{
+		while (to_free != NULL)
+		{
+
+			tmp = to_free;
+			to_free->content = 0;
+			to_free = to_free->next;
+			free(tmp);
+		}
+		tmp = NULL;
+	}
+	else
+	{
+		free(to_free);
+		to_free = NULL;
+	}
+	printf("Error\n");
+	return (0);
 }
 
 t_list	*_lstdelast_(t_list *stack_x)
@@ -48,3 +73,4 @@ t_list	*_lstdelast_(t_list *stack_x)
 	free(stack_x);
 	return (tmp_list);
 }
+

@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 00:25:12 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/26 14:26:50 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/29 23:59:18 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,20 @@ int	_check_arg_(int ac, char **av)
 			else
 				return (0);
 		}
+	}
+	return (1);
+}
+
+int	_check_content_(t_list	*stack_a)
+{
+	t_list	*tmp_list;
+
+	tmp_list = stack_a;
+	while (tmp_list != NULL)
+	{
+		if (tmp_list->content < -2147483648 || tmp_list->content > 2147483647)
+			return (0);
+		tmp_list = tmp_list->next;
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 21:41:15 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/26 14:27:03 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/29 23:59:16 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void	__print_list__(t_list *stack_a, t_list *stack_b, int elem)
 	i = 0;
 	while (++i < elem)
 	{
-		if (stack_a && stack_a->content)
+		if (stack_a)
 		{
 			printf("|%i|", stack_a->content);
 			stack_a = stack_a->next;
 		}
 		else
 			printf("| |");
-		if (stack_b && stack_b->content)
+		if (stack_b)
 		{
 			printf(" |%i|\n", stack_b->content);
 			stack_b = stack_b->next;
@@ -41,26 +41,27 @@ void	__print_list__(t_list *stack_a, t_list *stack_b, int elem)
 	printf(" A   B \n");
 }
 
-t_list	*__create_list__(int nb_elem, char **elem)
+int	__create_list__(int nb_elem, char **elem, t_list **stack_a)
 {
-	t_list *stack_a;
+	//t_list *stack_a;
 	t_list *tmp;
 	int i;
-	int nb;
+	long nb;
 
-	stack_a = malloc(sizeof(t_list) * (nb_elem - 1));
-	if (!stack_a)
-		return (NULL);
 	nb = ft_atoi(elem[1]);
-	stack_a = ft_lstnew(&nb);
+	*stack_a = ft_lstnew((int *)&nb);
+	if (!_check_value_atoi_(nb))
+		return (_freerror_(*stack_a));
 	i = 1;
 	while (++i < nb_elem)
 	{
 		nb = ft_atoi(elem[i]);
-		tmp = ft_lstnew(&nb);
-		ft_lstadd_back(&stack_a, tmp);
+		if (!_check_value_atoi_(nb))
+			return (_freerror_(*stack_a));
+		tmp = ft_lstnew((int *)&nb);
+		ft_lstadd_back(stack_a, tmp);
 	}
-	return (stack_a);
+	return (1);
 }
 
 int main(int ac, char **av)
@@ -76,7 +77,14 @@ int main(int ac, char **av)
 	}
 	//if (ac == 2)
 	//	_check_arg_av1_(av[1]);
-	stack_a = __create_list__(ac, av);
+	stack_a = malloc(sizeof(t_list) * (ac - 1));
+	if (!stack_a)
+		return (0);
+	if (!__create_list__(ac, av, &stack_a))
+	{
+		stack_a = NULL;
+		return (0);
+	}
 	if (!_check_double_(stack_a))
 	{
 		ft_putstr("Error\n");

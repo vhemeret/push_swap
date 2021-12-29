@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 00:25:25 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/20 16:03:13 by vahemere         ###   ########.fr       */
+/*   Updated: 2021/12/29 21:57:23 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			ft_toupper(int c);
 int			ft_tolower(int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
-int			ft_atoi(const char *nptr);
+long		ft_atoi(const char *nptr);
 int			ft_lstsize(t_list *lst);
 void		*ft_memset(void *s, int c, size_t n);
 void		ft_bzero(void *s, size_t n);
