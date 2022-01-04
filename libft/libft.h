@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 00:25:25 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/29 21:57:23 by vahemere         ###   ########.fr       */
+/*   Updated: 2022/01/03 21:52:20 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_list
 {
 	int	content;
 	struct s_list	*next;
+	struct s_list	*back;
+	
 }						t_list;
 
 int			ft_isalpha(int c);

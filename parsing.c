@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 00:25:12 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/29 23:59:18 by vahemere         ###   ########.fr       */
+/*   Updated: 2022/01/04 01:01:53 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 int	_check_arg_(int ac, char **av)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (++i < ac)
 	{
 		j = 0;
 		if (av[i][j] == '-' || av[i][j] == '+')
-				j++;
+			j++;
 		while (av[i][j])
 		{
 			if (av[i][j] >= '0' && av[i][j] <= '9')
@@ -38,17 +38,10 @@ int	_check_arg_(int ac, char **av)
 	return (1);
 }
 
-int	_check_content_(t_list	*stack_a)
+int	_check_value_atoi_(long nb)
 {
-	t_list	*tmp_list;
-
-	tmp_list = stack_a;
-	while (tmp_list != NULL)
-	{
-		if (tmp_list->content < -2147483648 || tmp_list->content > 2147483647)
-			return (0);
-		tmp_list = tmp_list->next;
-	}
+	if (nb < -2147483648 || nb > 2147483647)
+		return (0);
 	return (1);
 }
 
@@ -56,9 +49,7 @@ int	_check_double_(t_list *stack_a)
 {
 	int		*tab;
 	t_list	*tmp_list;
-	int 	i;
-	int		j;
-	int		k;
+	int		i;
 
 	tab = malloc(sizeof(int) * (ft_lstsize(stack_a)));
 	if (!tab)
@@ -72,40 +63,38 @@ int	_check_double_(t_list *stack_a)
 		i++;
 	}
 	tab[i] = tmp_list->content;
-	j = -1;
-	while (++j <= i)
+	if (!_check_tab_(tab, i))
 	{
-		k = j;
-		while (++k <= i)
-			if (tab[k] == tab[j])
-			{
-				_freedel_(tmp_list);
-				return (0);
-			}
+		free(tab);
+		_freerror_(stack_a);
+		return (0);
 	}
 	return (1);
 }
 
-/*int	_check_arg_av1_(char *av)
+int	_check_tab_(int *tab, int len)
 {
-	int	i;
-	int	*tab;
+	int	k;
+	int	j;
 
-	i = -1;
-	(void)av;
-	while (av[++i])
+	j = -1;
+	while (++j <= len)
 	{
-		if (ft_isdigit(ft_atoi(av[i])))
-			j++;
+		k = j;
+		while (++k <= len)
+		{
+			if (tab[k] == tab[j])
+				return (0);
+		}
 	}
-	return ;
-}*/
-
+	return (1);
+}
 
 int	_check_list_ranked_(t_list	*stack_a)
 {
 	t_list	*tmp_list;
 	int		tmp;
+
 	if (!stack_a)
 		return (0);
 	tmp_list = stack_a;
@@ -117,7 +106,7 @@ int	_check_list_ranked_(t_list	*stack_a)
 	}
 	if (tmp < tmp_list->content && tmp_list->next == NULL)
 	{
-		_freedel_(tmp_list);
+		_freedel_(stack_a);
 		return (0);
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 21:41:15 by vahemere          #+#    #+#             */
-/*   Updated: 2021/12/29 23:59:16 by vahemere         ###   ########.fr       */
+/*   Updated: 2022/01/04 01:04:00 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	__print_list__(t_list *stack_a, t_list *stack_b, int elem)
 {
-	int i;
+	int	i;
 
 	if (!stack_a)
 		return ;
@@ -43,10 +43,9 @@ void	__print_list__(t_list *stack_a, t_list *stack_b, int elem)
 
 int	__create_list__(int nb_elem, char **elem, t_list **stack_a)
 {
-	//t_list *stack_a;
-	t_list *tmp;
-	int i;
-	long nb;
+	t_list	*tmp;
+	int		i;
+	long	nb;
 
 	nb = ft_atoi(elem[1]);
 	*stack_a = ft_lstnew((int *)&nb);
@@ -64,60 +63,28 @@ int	__create_list__(int nb_elem, char **elem, t_list **stack_a)
 	return (1);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_list	*stack_a = NULL;
-	t_list	*stack_b = NULL;
-	if (ac <= 1)
+	t_list	*stack_a;
+	t_list	*stack_b;
+
+	stack_b = NULL;
+	if (!_manage_arg_error_(ac, av))
 		return (0);
-	if (!_check_arg_(ac, av))
-	{
-		ft_putstr("Error\n");
-		return (0);
-	}
-	//if (ac == 2)
-	//	_check_arg_av1_(av[1]);
 	stack_a = malloc(sizeof(t_list) * (ac - 1));
 	if (!stack_a)
 		return (0);
-	if (!__create_list__(ac, av, &stack_a))
-	{
-		stack_a = NULL;
+	if (!_manage_error_(ac, av, &stack_a))
 		return (0);
-	}
-	if (!_check_double_(stack_a))
-	{
-		ft_putstr("Error\n");
-		return (0);
-	}
-	if (!_check_list_ranked_(stack_a))
-		return (0);
+	__create_list__(ac, av, &stack_a);
 	printf("\n***INIT***\n\n");
 	__print_list__(stack_a, stack_b, ac);
-	printf("\n***SWAP A(SA)***\n\n");
-	_move_swap_x_(stack_a);
-	__print_list__(stack_a, stack_b, ac);
-	printf("\n***MOVE B(PB)***\n\n");
-	_move_push_x_(&stack_a, &stack_b);
-	__print_list__(stack_a, stack_b, ac);
-	printf("\n***MOVE B(PB)(1)***\n\n");
-	_move_push_x_(&stack_a, &stack_b);
-	__print_list__(stack_a, stack_b, ac);
-	printf("\n***SWAP S(SS)***\n\n");
-	_move_swap_x_(stack_a);
-	_move_swap_x_(stack_b);
-	__print_list__(stack_a, stack_b, ac);
-	printf("\n***MOVE A***\n\n");
-	_move_push_x_(&stack_b, &stack_a);
-	__print_list__(stack_a, stack_b, ac);
-	printf("\n***MOVE A(1)***\n\n");
-	_move_push_x_(&stack_b, &stack_a);
-	__print_list__(stack_a, stack_b, ac);
-	printf("\n***MOVE ROTATE A(RA)***\n\n");
-	_move_rotate_x_(&stack_a);
-	__print_list__(stack_a, stack_b, ac);
-	printf("\n***MOVE REVERSE ROTATE A(RRA)***\n\n");
-	_move_reverse_rotate_x_(&stack_a);
+	printf("\n");
+	if (ft_lstsize(stack_a) == 3)
+		_sort_three_(&stack_a);
+	else if (ft_lstsize(stack_a) == 5)
+		_sort_five_(&stack_a, &stack_b);
+	printf("\n***SORTED***\n\n");
 	__print_list__(stack_a, stack_b, ac);
 	return (0);
 }
