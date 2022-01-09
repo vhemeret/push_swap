@@ -5,39 +5,83 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 23:02:05 by vahemere          #+#    #+#             */
-/*   Updated: 2022/01/04 01:02:24 by vahemere         ###   ########.fr       */
+/*   Created: 2022/01/08 01:01:55 by vahemere          #+#    #+#             */
+/*   Updated: 2022/01/09 23:31:40 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#ifndef _PUSH_SWAP_H_
+# define _PUSH_SWAP_H_
 
 # include <stdio.h>
-# include "libft/libft.h"
+# include <unistd.h>
+# include <stdlib.h>
 
-int			__create_list__(int nb_elem, char **elem, t_list **stack_a);
-int			_manage_arg_error_(int ac, char **av);
-int			_manage_error_(int ac, char **av, t_list **stack_a);
-void		_move_swap_x_(t_list *stack_x, int x);
-void		_move_push_x_(t_list **stack_to_move, t_list **stack_x, int x);
-void		_move_rotate_x_(t_list **stack_x, int x);
-void		_move_reverse_rotate_x_(t_list **stack_x, int x);
-t_list		*_lstdelast_(t_list *stack_x);
-void		_freedel_(t_list *to_free);
-void		ft_putstr(char *str);
-int			_check_arg_(int ac, char **av);
-int			_check_double_(t_list *stack_a);
-int			_check_tab_(int *tab, int len);
-int			_check_list_ranked_(t_list	*stack_a);
-int			_check_content_(t_list	*stack);
-int			_freerror_(t_list *to_free);
-int			_check_value_atoi_(long nb);
+/*-----------------------------------*/
 
-// SORT SHORT
+/* Structure de maillon */
+typedef struct s_list
+{
+	int	content;
+	struct s_list	*next;
+	struct s_list	*back;
+	
+}						t_list;
 
-int			_pos_compar_three_(t_list *stack_a);
-void		_sort_three_(t_list	**stack_a);
-void		_sort_five_(t_list	**stack_a, t_list **stack_b);
+/* Structure de liste */
+typedef struct Dlist
+{
+	int len;
+	struct s_list *begin;
+	struct s_list *end;
+}						Dlist;
+
+/*-----------------------------------*/
+
+/* Prototypes */
+void	__print_list__(Dlist *stack_a, Dlist *stack_b, int elem);
+int		__create_list__(int nb_elem, char **elem, Dlist **stack_a, int x);
+
+/* check list */
+int		list_empty(Dlist *li);
+int		list_len(Dlist *li);
+int		list_begin(Dlist *li);
+int		list_end(Dlist *li);
+
+/* manage list */
+Dlist	*add_back_lst(Dlist **li, int content);
+Dlist	*add_front_lst(Dlist **li, int content);
+Dlist	*del_back_list(Dlist *li);
+Dlist	*del_front_list(Dlist *li);
+
+/* cleaning */
+void	*_freedel_(Dlist **to_free, int print_error);
+
+/* parsing */
+int	_manage_arg_error_(int ac, char **av);
+int	_manage_error_(Dlist **stack_a);
+int	_check_arg_(int ac, char **av);
+int	_check_value_atoi_(long nb);
+int	_check_double_(Dlist **stack_a);
+int	_check_tab_(int *tab, int len);
+int	_check_list_ranked_(Dlist **stack_a);
+
+/* utils */
+int		ft_isdigit(int c);
+long	ft_atoi(const char *nptr);
+void	ft_putstr(char *str);
+int		nb_words(char const *s, char c);
+char	**ft_split(char const *s, char c);
+void	__free_basic_int__(int **to_free);
+char	**__free_basic_char__(char **to_free, int nb_elem);
+
+/* Move */
+void	_move_swap_x_(Dlist *stack_x, int x);
+void	_move_push_x_(Dlist **stack_to_move, Dlist **stack_x, int x);
+void	_move_rotate_x_(Dlist **stack_x, int x);
+void	_move_reverse_rotate_x_(Dlist **stack_x, int x);
+
+
+/*-----------------------------------*/
 
 #endif

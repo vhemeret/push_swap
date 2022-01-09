@@ -5,23 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 23:17:45 by vahemere          #+#    #+#             */
-/*   Updated: 2022/01/03 21:52:09 by vahemere         ###   ########.fr       */
+/*   Created: 2022/01/08 01:41:39 by vahemere          #+#    #+#             */
+/*   Updated: 2022/01/08 01:41:39 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
 
-void	_move_swap_x_(t_list *stack_x, int x)
+void	_move_swap_x_(Dlist *stack_x, int x)
 {
 	int	tmp;
 
-	if (!stack_x || !stack_x->next)
+	if (!stack_x || !stack_x->begin->next)
 		return ;
-	tmp = stack_x->content;
-	stack_x->content = stack_x->next->content;
-	stack_x->next->content = tmp;
+	tmp = stack_x->begin->content;
+	stack_x->begin->content = stack_x->begin->next->content;
+	stack_x->begin->next->content = tmp;
 	if (x == 1)
 		ft_putstr("sa\n");
 	else if (x == 2)
@@ -30,17 +29,17 @@ void	_move_swap_x_(t_list *stack_x, int x)
 		ft_putstr("ss\n");
 }
 
-void	_move_push_x_(t_list **stack_to_move, t_list **stack_x, int x)
+void	_move_push_x_(Dlist **stack_to_move, Dlist **stack_x, int x)
 {
-	t_list	*tmp;
-
 	if (!*stack_to_move)
 		return ;
 	else
 	{
-		tmp = ft_lstnew(&(*stack_to_move)->content);
-		ft_lstadd_front(stack_x, tmp);
-		*stack_to_move = (*stack_to_move)->next;
+		add_front_lst(stack_x, (*stack_to_move)->begin->content);
+		if ((*stack_to_move)->begin->next)
+			del_front_list(*stack_to_move);
+		else if (!(*stack_to_move)->begin->next)
+			_freedel_(stack_to_move, 0);
 	}
 	if (x == 1)
 		ft_putstr("pa\n");
@@ -48,15 +47,12 @@ void	_move_push_x_(t_list **stack_to_move, t_list **stack_x, int x)
 		ft_putstr("pb\n");
 }
 
-void	_move_rotate_x_(t_list **stack_x, int x)
+void	_move_rotate_x_(Dlist **stack_x, int x)
 {
-	t_list	*tmp_list;
-
-	if (!*stack_x || !(*stack_x)->next)
+	if (!*stack_x || !(*stack_x)->begin->next)
 		return ;
-	tmp_list = *stack_x;
-	*stack_x = (*stack_x)->next;
-	ft_lstadd_back(stack_x, tmp_list);
+	add_back_lst(stack_x, (*stack_x)->begin->content);
+	del_front_list(*stack_x);
 	if (x == 1)
 		ft_putstr("ra\n");
 	else if (x == 2)
@@ -65,35 +61,19 @@ void	_move_rotate_x_(t_list **stack_x, int x)
 		ft_putstr("rr\n");
 }
 
-void	_move_reverse_rotate_x_(t_list **stack_x, int x)
+void	_move_reverse_rotate_x_(Dlist **stack_x, int x)
 {
-	t_list	*new;
-	t_list	*tmp_list;
-
-	if (!*stack_x || !(*stack_x)->next)
+	if (!*stack_x || !(*stack_x)->begin->next)
 		return ;
-	tmp_list = *stack_x;
-	while (tmp_list->next != NULL)
-		tmp_list = tmp_list->next;
-	new = ft_lstnew(&tmp_list->content);
-	ft_lstadd_front(stack_x, new);
-	*stack_x = _lstdelast_(*stack_x);
+	else
+	{
+		add_front_lst(stack_x, (*stack_x)->end->content);
+		del_back_list(*stack_x);
+	}
 	if (x == 1)
 		ft_putstr("rra\n");
 	else if (x == 2)
 		ft_putstr("rrb\n");
 	else if (x == 3)
 		ft_putstr("rrr\n");
-}
-
-t_list	*_lstdelast_(t_list *stack_x)
-{
-	t_list	*tmp_list;
-
-	tmp_list = stack_x;
-	while (stack_x->next != NULL)
-		stack_x = stack_x->next;
-	stack_x->content = 0;
-	free(stack_x);
-	return (tmp_list);
 }

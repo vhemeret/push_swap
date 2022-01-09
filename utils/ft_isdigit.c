@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/25 20:47:09 by vahemere          #+#    #+#             */
-/*   Updated: 2021/10/25 20:48:06 by vahemere         ###   ########.fr       */
+/*   Created: 2021/09/30 21:50:35 by vahemere          #+#    #+#             */
+/*   Updated: 2022/01/08 01:09:00 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-int	ft_tolower(int c)
+int	ft_isdigit(int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (c + 32);
-	return (c);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

@@ -6,12 +6,11 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 00:25:12 by vahemere          #+#    #+#             */
-/*   Updated: 2022/01/04 01:01:53 by vahemere         ###   ########.fr       */
+/*   Updated: 2022/01/09 22:18:07 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	_check_arg_(int ac, char **av)
 {
@@ -45,16 +44,16 @@ int	_check_value_atoi_(long nb)
 	return (1);
 }
 
-int	_check_double_(t_list *stack_a)
+int	_check_double_(Dlist **stack_a)
 {
 	int		*tab;
 	t_list	*tmp_list;
 	int		i;
 
-	tab = malloc(sizeof(int) * (ft_lstsize(stack_a)));
+	tab = malloc(sizeof(*tab) * ((*stack_a)->len));
 	if (!tab)
 		return (0);
-	tmp_list = stack_a;
+	tmp_list = (*stack_a)->begin;
 	i = 0;
 	while (tmp_list->next != NULL)
 	{
@@ -65,10 +64,12 @@ int	_check_double_(t_list *stack_a)
 	tab[i] = tmp_list->content;
 	if (!_check_tab_(tab, i))
 	{
-		free(tab);
-		_freerror_(stack_a);
+		__free_basic_int__(&tab);
+		_freedel_(stack_a, 1);
 		return (0);
 	}
+	else
+		__free_basic_int__(&tab);
 	return (1);
 }
 
@@ -90,14 +91,14 @@ int	_check_tab_(int *tab, int len)
 	return (1);
 }
 
-int	_check_list_ranked_(t_list	*stack_a)
+int	_check_list_ranked_(Dlist **stack_a)
 {
 	t_list	*tmp_list;
 	int		tmp;
 
 	if (!stack_a)
 		return (0);
-	tmp_list = stack_a;
+	tmp_list = (*stack_a)->begin;
 	while (tmp_list->next != NULL
 		&& (tmp_list->content < tmp_list->next->content))
 	{
@@ -106,7 +107,7 @@ int	_check_list_ranked_(t_list	*stack_a)
 	}
 	if (tmp < tmp_list->content && tmp_list->next == NULL)
 	{
-		_freedel_(stack_a);
+		_freedel_(stack_a, 0);
 		return (0);
 	}
 	return (1);
