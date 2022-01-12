@@ -20,17 +20,15 @@ Dlist	*add_back_lst(Dlist **li, int content)
 	if (!new_element)
 		return (NULL);
 	new_element->content = content;
+	new_element->index = 0;
+	new_element->associate = 0;
+	new_element->to_top = 0;
+	new_element->to_top_t = 0;
+	new_element->rotation = 0;
 	new_element->next = NULL;
 	new_element->back = NULL;
 	if (!(*li))
-	{
-		*li = malloc(sizeof(Dlist));
-		if (!li)
-			return (NULL);
-		(*li)->len = 0;
-		(*li)->begin = new_element;
-		(*li)->end = new_element;
-	}
+		__malloc_dlist__(li, new_element);
 	else
 	{
 		(*li)->end->next = new_element;
@@ -49,17 +47,15 @@ Dlist	*add_front_lst(Dlist **li, int content)
 	if (!new_element)
 		return (NULL);
 	new_element->content = content;
+	new_element->index = 0;
+	new_element->associate = 0;
+	new_element->to_top = 0;
+	new_element->to_top_t = 0;
+	new_element->rotation = 0;
 	new_element->next = NULL;
 	new_element->back = NULL;
 	if (!(*li))
-	{
-		*li = malloc(sizeof(Dlist));
-		if (!*li)
-			return (NULL);
-		(*li)->len = 0;
-		(*li)->begin = new_element;
-		(*li)->end = new_element;
-	}
+		__malloc_dlist__(li, new_element);
 	else
 	{
 		(*li)->begin->back = new_element;

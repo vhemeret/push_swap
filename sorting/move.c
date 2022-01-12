@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	_move_swap_x_(Dlist *stack_x, int x)
+void	_move_swap_x_(Dlist **stack_x, int x)
 {
 	int	tmp;
 
-	if (!stack_x || !stack_x->begin->next)
+	if (!(*stack_x) || !(*stack_x)->begin->next)
 		return ;
-	tmp = stack_x->begin->content;
-	stack_x->begin->content = stack_x->begin->next->content;
-	stack_x->begin->next->content = tmp;
+	tmp = (*stack_x)->begin->content;
+	(*stack_x)->begin->content = (*stack_x)->begin->next->content;
+	(*stack_x)->begin->next->content = tmp;
 	if (x == 1)
 		ft_putstr("sa\n");
 	else if (x == 2)

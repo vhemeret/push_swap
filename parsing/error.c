@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 22:14:22 by vahemere          #+#    #+#             */
-/*   Updated: 2022/01/10 00:26:41 by vahemere         ###   ########.fr       */
+/*   Updated: 2022/01/10 22:14:39 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	_manage_arg_error_(int ac, char **av)
 {
 	char	**tab;
 
-	if (ac <= 1)
+	if (ac <= 1
+		|| (ac == 2 && (!av[1] || av[1][0] == '\0' || av[1][1] == '\0')))
 		return (0);
 	if (ac == 2)
 	{

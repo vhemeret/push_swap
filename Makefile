@@ -10,18 +10,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =		list/data_list.c \
-			list/list_cleaning.c \
-			list/manage_list.c \
-			utils/ft_atoi.c \
-			utils/ft_isdigit.c \
-			utils/ft_putstr.c \
-			move.c \
+SRCS =		list/*.c \
+			parsing/*.c \
+			sorting/*.c \
+			utils/*.c \
 			push_swap.c \
 
 OBJS = ${SRCS:.c=.o}
 
-NAME = push_swap.a
+NAME = push_swap
 COMPIL = gcc -Wall -Wextra -Werror
 
 all : ${NAME}

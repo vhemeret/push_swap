@@ -14,7 +14,7 @@
 
 void	__print_list__(Dlist *stack_a, Dlist *stack_b, int elem)
 {
-	int	i;
+	int		i;
 	t_list	*stack_a_tmp;
 	t_list	*stack_b_tmp;
 
@@ -54,8 +54,6 @@ void	__print_list__(Dlist *stack_a, Dlist *stack_b, int elem)
 	printf(" A   B \n");
 }
 
-/*-------------------------------------------------------*/
-
 int	__create_list__(int nb_elem, char **elem, Dlist **stack_a, int x)
 {
 	int		i;
@@ -79,9 +77,7 @@ int	__create_list__(int nb_elem, char **elem, Dlist **stack_a, int x)
 	return (1);
 }
 
-/*-------------------------------------------------------*/
-
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	Dlist	*stack_a;
 	Dlist	*stack_b;
@@ -92,7 +88,8 @@ int main(int ac, char **av)
 		return (0);
 	if (ac == 2)
 	{
-		if (!__create_list__(nb_words(av[1], ' '), ft_split(av[1], ' '), &stack_a, 1))
+		if (!__create_list__(nb_words(av[1], ' '),
+				ft_split(av[1], ' '), &stack_a, 1))
 			return (0);
 	}
 	else
@@ -101,10 +98,21 @@ int main(int ac, char **av)
 	if (!_manage_error_(&stack_a))
 		return (0);
 
-	if (ac == 2)
-		__print_list__(stack_a, stack_b, nb_words(av[1], ' ') + 1);
-	else
-		__print_list__(stack_a, stack_b, ac);
+///* *******************************PRINTAGE******************************************* */
+//	if (ac == 2)
+//		__print_list__(stack_a, stack_b, nb_words(av[1], ' ') + 1);
+//	else
+//		__print_list__(stack_a, stack_b, ac);
+///* ************************************************************************** */
+
+	__manage_algo__(&stack_a, &stack_b);
+
+///* *******************************PRINTAGE******************************************* */
+//		if (ac == 2)
+//		__print_list__(stack_a, stack_b, nb_words(av[1], ' ') + 1);
+//	else
+//		__print_list__(stack_a, stack_b, ac);
+///* ************************************************************************** */
 
 	if (!list_empty(stack_a))
 		_freedel_(&stack_a, 0);

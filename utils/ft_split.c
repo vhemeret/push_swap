@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:58:11 by vahemere          #+#    #+#             */
-/*   Updated: 2022/01/10 00:28:47 by vahemere         ###   ########.fr       */
+/*   Updated: 2022/01/10 21:46:55 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	**__free_split__(char **to_free, int nb_elem)
 	i = -1;
 	if (nb_elem)
 	{
-		while (++i <= nb_elem)
+		while (++i < nb_elem)
 		{
 			free(to_free[i]);
 			to_free[i] = NULL;
@@ -79,7 +79,7 @@ char	**ft_split(char const *s, char c)
 
 	word = 0;
 	i = -1;
-	if (!s)
+	if (!s || s[1] == '\0' || s[0] == '\0')
 		return (NULL);
 	tab = malloc(sizeof(*tab) * (nb_words(s, c) + 1));
 	if (!tab)
