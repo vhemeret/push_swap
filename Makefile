@@ -10,31 +10,34 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =		list/*.c \
-			parsing/*.c \
-			sorting/*.c \
-			utils/*.c \
-			push_swap.c \
+MAIN =		push_swap.c \
 
-OBJS = ${SRCS:.c=.o}
+SRC =		*.c \
+
+LIST=$(addprefix list/, $(SRC))
+PARSING=$(addprefix parsing/, $(SRC))
+SORTING=$(addprefix sorting/, $(SRC))
+UTILS=$(addprefix utils/, $(SRC))
+
+OBJS = ${SRC:.c=.o}
 
 NAME = push_swap
 COMPIL = gcc -Wall -Wextra -Werror
 
-all : ${NAME}
+all: $(NAME)
 
-.c.o :
-	${COMPIL} -c $< -o ${<:.c=.o}
+$(NAME): $(OBJS)
+	$(COMPIL) $(OBJS) -o $(NAME)
 
-$(NAME) : $(OBJS)
-			ar -rcs $(NAME) $(OBJS)
+$(OBJS): $(LIST) $(PARSING) $(SORTING) $(UTILS) $(MAIN)
+	$(COMPIL) -c $(LIST) $(PARSING) $(SORTING) $(UTILS) $(MAIN)
 
-clean :		
-			rm -f $(OBJS)
+clean:
+	rm -rf $(OBJS)
 
-fclean : clean
-			rm -f $(NAME)
+fclean: clean
+	rm -rf $(NAME)
 
-re : fclean all
+re: fclean all
 
 .PHONY : all clean fclean re

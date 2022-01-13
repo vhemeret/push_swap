@@ -112,7 +112,7 @@ int	main(int ac, char **av)
 //		__print_list__(stack_a, stack_b, nb_words(av[1], ' ') + 1);
 //	else
 //		__print_list__(stack_a, stack_b, ac);
-///* ************************************************************************** */
+//* ************************************************************************** */
 
 	if (!list_empty(stack_a))
 		_freedel_(&stack_a, 0);
