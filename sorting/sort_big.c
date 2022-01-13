@@ -63,7 +63,6 @@ int	_sorting_tab_(int *tab, int len)
 void	_push_until_bigest_(Dlist **stack_a, Dlist **stack_b, int med, int big)
 {
 	int	size;
-	(void)big;
 
 	size = (*stack_a)->len;
 	while ((*stack_a)->len > (size / 2) + 1)
@@ -73,7 +72,7 @@ void	_push_until_bigest_(Dlist **stack_a, Dlist **stack_b, int med, int big)
 		else
 			_move_push_x_(stack_a, stack_b, 2);
 	}
-	while ((*stack_a)->len > 1)
+	while ((*stack_a)->len > 5)
 	{
 		if ((*stack_a)->begin->content == big)
 			_move_rotate_x_(stack_a, 1);

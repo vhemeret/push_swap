@@ -23,7 +23,7 @@ void	_attribute_index_(Dlist **stack_x)
 	tmp_list = (*stack_x)->begin;
 	while (tmp_list)
 	{
-		tmp_list->index = (*stack_x)->len - i - 1;
+		tmp_list->index = (*stack_x)->len - i;
 		tmp_list = tmp_list->next;
 		i++;
 	}
@@ -65,9 +65,9 @@ void	_is_faster_to_top_big_(Dlist **stack_x)
 	size = (*stack_x)->len;
 	while (tmp_list)
 	{
-		if (tmp_list->index >= size / 2)
+		if (tmp_list->index >= (size / 2) + 1)
 		{
-			tmp_list->to_top = size - tmp_list->index + 1;
+			tmp_list->to_top = size - tmp_list->index - 1;
 			tmp_list->rotation = 1;
 		}
 		else
