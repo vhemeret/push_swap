@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	__manage_algo__(Dlist **stack_a, Dlist **stack_b)
+void	__manage_algo__(t_Dlist **stack_a, t_Dlist **stack_b)
 {
 	if ((*stack_a)->len == 2)
 		_move_swap_x_(stack_a, 1);

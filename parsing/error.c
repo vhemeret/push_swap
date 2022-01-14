@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 22:14:22 by vahemere          #+#    #+#             */
-/*   Updated: 2022/01/10 22:14:39 by vahemere         ###   ########.fr       */
+/*   Updated: 2022/01/14 00:17:57 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	_manage_arg_error_(int ac, char **av)
 	return (1);
 }
 
-int	_manage_error_(Dlist **stack_a)
+int	_manage_error_(t_Dlist **stack_a)
 {
 	if ((*stack_a)->len == 1)
 	{

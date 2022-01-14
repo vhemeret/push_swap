@@ -12,9 +12,9 @@
 
 #include "../push_swap.h"
 
-void	__malloc_dlist__(Dlist **li, t_list *new_element)
+void	__malloc_t_dlist__(t_Dlist **li, t_list *new_element)
 {
-	*li = malloc(sizeof(Dlist));
+	*li = malloc(sizeof(t_Dlist));
 	if (!*li)
 		return ;
 	(*li)->len = 0;

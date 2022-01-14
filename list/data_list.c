@@ -12,28 +12,28 @@
 
 #include "../push_swap.h"
 
-int	list_empty(Dlist *li)
+int	list_empty(t_Dlist *li)
 {
 	if (!li)
 		return (1);
 	return (0);
 }
 
-int	list_len(Dlist *li)
+int	list_len(t_Dlist *li)
 {
 	if (!li)
 		return (0);
 	return (li->len);
 }
 
-int	list_begin(Dlist *li)
+int	list_begin(t_Dlist *li)
 {
 	if (!li)
 		return (0);
 	return (li->begin->content);
 }
 
-int	list_end(Dlist *li)
+int	list_end(t_Dlist *li)
 {
 	if (!li)
 		return (0);

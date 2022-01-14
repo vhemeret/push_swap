@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-int	_get_median_(Dlist **stack_a)
+int	_get_median_(t_Dlist **stack_a)
 {
 	int		*tab;
 	t_list	*tmp_list;
@@ -60,28 +60,28 @@ int	_sorting_tab_(int *tab, int len)
 	return (tab[len / 2]);
 }
 
-void	_push_until_bigest_(Dlist **stack_a, Dlist **stack_b, int med, int big)
+void	_push_until_bigest_(t_Dlist **stack_a, t_Dlist **stack_b, int m, int b)
 {
 	int	size;
 
 	size = (*stack_a)->len;
 	while ((*stack_a)->len > (size / 2) + 1)
 	{
-		if ((*stack_a)->begin->content >= med)
+		if ((*stack_a)->begin->content >= m)
 			_move_rotate_x_(stack_a, 1);
 		else
 			_move_push_x_(stack_a, stack_b, 2);
 	}
 	while ((*stack_a)->len > 2)
 	{
-		if ((*stack_a)->begin->content == big)
+		if ((*stack_a)->begin->content == b)
 			_move_rotate_x_(stack_a, 1);
 		else
 			_move_push_x_(stack_a, stack_b, 2);
 	}
 }
 
-void	_sort_big_(Dlist **stack_a, Dlist **stack_b)
+void	_sort_big_(t_Dlist **stack_a, t_Dlist **stack_b)
 {
 	int		bigest;
 	int		median;

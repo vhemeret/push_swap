@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-int	_smallest_(Dlist **stack_x)
+int	_smallest_(t_Dlist **stack_x)
 {
 	t_list	*tmp_list;
 	int		smallest;
@@ -28,7 +28,7 @@ int	_smallest_(Dlist **stack_x)
 	return (smallest);
 }
 
-int	_pos_smallest_(Dlist **stack_x)
+int	_pos_smallest_(t_Dlist **stack_x)
 {
 	t_list	*tmp_list;
 	int		min;
@@ -49,7 +49,7 @@ int	_pos_smallest_(Dlist **stack_x)
 	return (index);
 }
 
-int	_bigest_(Dlist **stack_x)
+int	_bigest_(t_Dlist **stack_x)
 {
 	t_list	*tmp_list;
 	int		bigest;
@@ -65,7 +65,7 @@ int	_bigest_(Dlist **stack_x)
 	return (bigest);
 }
 
-int	_pos_bigest_(Dlist **stack_x)
+int	_pos_bigest_(t_Dlist **stack_x)
 {
 	t_list	*tmp_list;
 	int		max;
@@ -86,7 +86,7 @@ int	_pos_bigest_(Dlist **stack_x)
 	return (index);
 }
 
-void	_is_faster_to_top_(Dlist **stack_x, int pos_content, int content)
+void	_is_faster_to_top_(t_Dlist **stack_x, int pos_content, int content)
 {
 	int	size;
 

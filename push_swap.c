@@ -12,49 +12,7 @@
 
 #include "push_swap.h"
 
-void	__print_list__(Dlist *stack_a, Dlist *stack_b, int elem)
-{
-	int		i;
-	t_list	*stack_a_tmp;
-	t_list	*stack_b_tmp;
-
-	i = 0;
-	if (stack_a)
-		stack_a_tmp = stack_a->begin;
-	if (stack_b)
-		stack_b_tmp = stack_b->begin;
-	while (++i < elem)
-	{
-		if (stack_a)
-		{
-			if (stack_a_tmp)
-			{
-				printf("|%i|", stack_a_tmp->content);
-				stack_a_tmp = stack_a_tmp->next;
-			}
-			else
-				printf("| |");
-		}
-		else
-			printf("| |");
-		if (stack_b)
-		{
-			if (stack_b_tmp)
-			{
-				printf(" |%i|\n", stack_b_tmp->content);
-				stack_b_tmp = stack_b_tmp->next;
-			}
-			else
-				printf(" | |\n");
-		}
-		else
-			printf(" | |\n");
-	}
-	printf(" -   - \n");
-	printf(" A   B \n");
-}
-
-int	__create_list__(int nb_elem, char **elem, Dlist **stack_a, int x)
+int	__create_list__(int nb_elem, char **elem, t_Dlist **stack_a, int x)
 {
 	int		i;
 	long	nb;
@@ -79,8 +37,8 @@ int	__create_list__(int nb_elem, char **elem, Dlist **stack_a, int x)
 
 int	main(int ac, char **av)
 {
-	Dlist	*stack_a;
-	Dlist	*stack_b;
+	t_Dlist	*stack_a;
+	t_Dlist	*stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -97,23 +55,7 @@ int	main(int ac, char **av)
 			return (0);
 	if (!_manage_error_(&stack_a))
 		return (0);
-
-///* *******************************PRINTAGE******************************************* */
-//	if (ac == 2)
-//		__print_list__(stack_a, stack_b, nb_words(av[1], ' ') + 1);
-//	else
-//		__print_list__(stack_a, stack_b, ac);
-///* ************************************************************************** */
-
 	__manage_algo__(&stack_a, &stack_b);
-
-//* *******************************PRINTAGE******************************************* */
-//		if (ac == 2)
-//		__print_list__(stack_a, stack_b, nb_words(av[1], ' ') + 1);
-//	else
-//		__print_list__(stack_a, stack_b, ac);
-//* ************************************************************************** */
-
 	if (!list_empty(stack_a))
 		_freedel_(&stack_a, 0);
 	if (!list_empty(stack_b))

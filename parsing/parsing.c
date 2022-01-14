@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 00:25:12 by vahemere          #+#    #+#             */
-/*   Updated: 2022/01/11 00:41:44 by vahemere         ###   ########.fr       */
+/*   Updated: 2022/01/14 00:18:04 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	_check_value_atoi_(long nb)
 	return (1);
 }
 
-int	_check_double_(Dlist **stack_a)
+int	_check_double_(t_Dlist **stack_a)
 {
 	int		*tab;
 	t_list	*tmp_list;
@@ -91,7 +91,7 @@ int	_check_tab_(int *tab, int len)
 	return (1);
 }
 
-int	_check_list_ranked_(Dlist **stack_a)
+int	_check_list_ranked_(t_Dlist **stack_a)
 {
 	t_list	*tmp_list;
 	int		tmp;

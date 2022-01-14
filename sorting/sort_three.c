@@ -6,13 +6,13 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 16:14:32 by vahemere          #+#    #+#             */
-/*   Updated: 2022/01/10 16:14:36 by vahemere         ###   ########.fr       */
+/*   Updated: 2022/01/14 00:18:45 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	_pos_compar_three_(Dlist **stack_a)
+int	_pos_compar_three_(t_Dlist **stack_a)
 {
 	t_list	*tmp;
 
@@ -40,7 +40,7 @@ int	_pos_compar_three_(Dlist **stack_a)
 	return (0);
 }
 
-void	_sort_three_(Dlist	**stack_a)
+void	_sort_three_(t_Dlist	**stack_a)
 {
 	int	index;
 

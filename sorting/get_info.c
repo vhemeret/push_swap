@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	_attribute_index_(Dlist **stack_x)
+void	_attribute_index_(t_Dlist **stack_x)
 {
 	t_list	*tmp_list;
 	int		i;
@@ -29,7 +29,7 @@ void	_attribute_index_(Dlist **stack_x)
 	}
 }
 
-void	_find_associate_(Dlist **stack_a, Dlist **stack_b)
+void	_find_associate_(t_Dlist **stack_a, t_Dlist **stack_b)
 {
 	t_list	*tmp_listb;
 	t_list	*tmp_lista;
@@ -54,7 +54,7 @@ void	_find_associate_(Dlist **stack_a, Dlist **stack_b)
 	}
 }
 
-void	_is_faster_to_top_big_(Dlist **stack_x)
+void	_is_faster_to_top_big_(t_Dlist **stack_x)
 {
 	t_list	*tmp_list;
 	int		size;
@@ -79,10 +79,10 @@ void	_is_faster_to_top_big_(Dlist **stack_x)
 	}
 }
 
-void	_calculate_of_top_t_(Dlist **stack_a, Dlist **stack_b)
+void	_calculate_of_top_t_(t_Dlist **stack_a, t_Dlist **stack_b)
 {
-	t_list *tmp_lista;
-	t_list *tmp_listb;
+	t_list	*tmp_lista;
+	t_list	*tmp_listb;
 
 	if (!(*stack_b) || !(*stack_a))
 		return ;
@@ -97,7 +97,7 @@ void	_calculate_of_top_t_(Dlist **stack_a, Dlist **stack_b)
 	}
 }
 
-void	_get_info_(Dlist **stack_a, Dlist **stack_b)
+void	_get_info_(t_Dlist **stack_a, t_Dlist **stack_b)
 {
 	_attribute_index_(stack_a);
 	_attribute_index_(stack_b);

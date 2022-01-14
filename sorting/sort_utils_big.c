@@ -12,15 +12,13 @@
 
 #include "../push_swap.h"
 
-
-t_list	*_find_better_top_t_(Dlist **stack_b)
+t_list	*_find_better_top_t_(t_Dlist **stack_b)
 {
 	t_list	*tmp_list;
 	t_list	*better;
 
 	tmp_list = (*stack_b)->begin;
 	better = tmp_list;
-	//tmp_list = tmp_list->next;
 	while (tmp_list)
 	{
 		if (tmp_list->to_top_t < better->to_top_t)
@@ -30,12 +28,12 @@ t_list	*_find_better_top_t_(Dlist **stack_b)
 	return (better);
 }
 
-int	_moving_better_top_b_(Dlist **stack_b)
+int	_moving_better_top_b_(t_Dlist **stack_b)
 {
 	t_list	*better;
-	int better_rotation;
-	int better_content;
-	int better_associate;
+	int		better_rotation;
+	int		better_content;
+	int		better_associate;
 
 	better = _find_better_top_t_(stack_b);
 	better_content = better->content;
@@ -51,7 +49,7 @@ int	_moving_better_top_b_(Dlist **stack_b)
 	return (better_associate);
 }
 
-void	_moving_better_top_a_(Dlist **stack_a, int associate)
+void	_moving_better_top_a_(t_Dlist **stack_a, int associate)
 {
 	t_list	*tmp_list;
 	int		rotation;
@@ -67,14 +65,14 @@ void	_moving_better_top_a_(Dlist **stack_a, int associate)
 		if (rotation == 1)
 			_move_rotate_x_(stack_a, 1);
 		else
-		_move_reverse_rotate_x_(stack_a, 1);
+			_move_reverse_rotate_x_(stack_a, 1);
 	}
 }
 
-void	_moving_(Dlist **stack_a, Dlist **stack_b)
+void	_moving_(t_Dlist **stack_a, t_Dlist **stack_b)
 {
 	int	associate_to_b;
-	
+
 	associate_to_b = _moving_better_top_b_(stack_b);
 	_moving_better_top_a_(stack_a, associate_to_b);
 	_move_push_x_(stack_b, stack_a, 1);

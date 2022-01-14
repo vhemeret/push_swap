@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	*_freedel_(Dlist **to_free, int print_error)
+void	*_freedel_(t_Dlist **to_free, int print_error)
 {
 	t_list	*tmp_list;
 

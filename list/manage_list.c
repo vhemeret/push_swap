@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-Dlist	*add_back_lst(Dlist **li, int content)
+t_Dlist	*add_back_lst(t_Dlist **li, int content)
 {
 	t_list	 *new_element;
 
@@ -28,7 +28,7 @@ Dlist	*add_back_lst(Dlist **li, int content)
 	new_element->next = NULL;
 	new_element->back = NULL;
 	if (!(*li))
-		__malloc_dlist__(li, new_element);
+		 __malloc_t_dlist__(li, new_element);
 	else
 	{
 		(*li)->end->next = new_element;
@@ -39,7 +39,7 @@ Dlist	*add_back_lst(Dlist **li, int content)
 	return (*li);
 }
 
-Dlist	*add_front_lst(Dlist **li, int content)
+t_Dlist	*add_front_lst(t_Dlist **li, int content)
 {
 	t_list	*new_element;
 
@@ -55,7 +55,7 @@ Dlist	*add_front_lst(Dlist **li, int content)
 	new_element->next = NULL;
 	new_element->back = NULL;
 	if (!(*li))
-		__malloc_dlist__(li, new_element);
+		 __malloc_t_dlist__(li, new_element);
 	else
 	{
 		(*li)->begin->back = new_element;
@@ -66,7 +66,7 @@ Dlist	*add_front_lst(Dlist **li, int content)
 	return (*li);
 }
 
-Dlist	*del_back_list(Dlist *li)
+t_Dlist	*del_back_list(t_Dlist *li)
 {
 	t_list	*tmp_list;
 
@@ -91,7 +91,7 @@ Dlist	*del_back_list(Dlist *li)
 	return (li);
 }
 
-Dlist	*del_front_list(Dlist *li)
+t_Dlist	*del_front_list(t_Dlist *li)
 {
 	t_list	*tmp_list;
 

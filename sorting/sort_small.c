@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	_sort_small_(Dlist **stack_a, Dlist **stack_b)
+void	_sort_small_(t_Dlist **stack_a, t_Dlist **stack_b)
 {
 	int	pos_smallest;
 	int	smallest;

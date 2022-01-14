@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	_move_swap_x_(Dlist **stack_x, int x)
+void	_move_swap_x_(t_Dlist **stack_x, int x)
 {
 	int	tmp;
 
@@ -29,7 +29,7 @@ void	_move_swap_x_(Dlist **stack_x, int x)
 		ft_putstr("ss\n");
 }
 
-void	_move_push_x_(Dlist **stack_to_move, Dlist **stack_x, int x)
+void	_move_push_x_(t_Dlist **stack_to_move, t_Dlist **stack_x, int x)
 {
 	if (!*stack_to_move)
 		return ;
@@ -47,7 +47,7 @@ void	_move_push_x_(Dlist **stack_to_move, Dlist **stack_x, int x)
 		ft_putstr("pb\n");
 }
 
-void	_move_rotate_x_(Dlist **stack_x, int x)
+void	_move_rotate_x_(t_Dlist **stack_x, int x)
 {
 	if (!*stack_x || !(*stack_x)->begin->next)
 		return ;
@@ -61,7 +61,7 @@ void	_move_rotate_x_(Dlist **stack_x, int x)
 		ft_putstr("rr\n");
 }
 
-void	_move_reverse_rotate_x_(Dlist **stack_x, int x)
+void	_move_reverse_rotate_x_(t_Dlist **stack_x, int x)
 {
 	if (!*stack_x || !(*stack_x)->begin->next)
 		return ;
