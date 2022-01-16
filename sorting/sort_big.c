@@ -72,7 +72,7 @@ void	_push_until_bigest_(t_Dlist **stack_a, t_Dlist **stack_b, int m, int b)
 		else
 			_move_push_x_(stack_a, stack_b, 2);
 	}
-	while ((*stack_a)->len > 2)
+	while ((*stack_a)->len > 1)
 	{
 		if ((*stack_a)->begin->content == b)
 			_move_rotate_x_(stack_a, 1);

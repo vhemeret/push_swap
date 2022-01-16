@@ -14,7 +14,7 @@
 
 t_Dlist	*add_back_lst(t_Dlist **li, int content)
 {
-	t_list	 *new_element;
+	t_list	*new_element;
 
 	new_element = malloc(sizeof(t_list));
 	if (!new_element)
@@ -28,7 +28,7 @@ t_Dlist	*add_back_lst(t_Dlist **li, int content)
 	new_element->next = NULL;
 	new_element->back = NULL;
 	if (!(*li))
-		 __malloc_t_dlist__(li, new_element);
+		__malloc_t_dlist__(li, new_element);
 	else
 	{
 		(*li)->end->next = new_element;
@@ -55,7 +55,7 @@ t_Dlist	*add_front_lst(t_Dlist **li, int content)
 	new_element->next = NULL;
 	new_element->back = NULL;
 	if (!(*li))
-		 __malloc_t_dlist__(li, new_element);
+		__malloc_t_dlist__(li, new_element);
 	else
 	{
 		(*li)->begin->back = new_element;
