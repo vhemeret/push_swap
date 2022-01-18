@@ -39,6 +39,7 @@ int	main(int ac, char **av)
 {
 	t_Dlist	*stack_a;
 	t_Dlist	*stack_b;
+	char	**tab;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -46,9 +47,10 @@ int	main(int ac, char **av)
 		return (0);
 	if (ac == 2)
 	{
+		tab = ft_split(av[1], ' ');
 		if (!__create_list__(nb_words(av[1], ' '),
-				ft_split(av[1], ' '), &stack_a, 1))
-			return (0);
+				tab, &stack_a, 1))
+			return (__free_split_parsing__(tab, nb_words(av[1], ' ')));
 	}
 	else
 		if (!__create_list__(ac, av, &stack_a, 0))
@@ -56,9 +58,6 @@ int	main(int ac, char **av)
 	if (!_manage_error_(&stack_a))
 		return (0);
 	__manage_algo__(&stack_a, &stack_b);
-	if (!list_empty(stack_a))
-		_freedel_(&stack_a, 0);
-	if (!list_empty(stack_b))
-		_freedel_(&stack_b, 0);
+	cleaning(&stack_a, &stack_b);
 	return (0);
 }

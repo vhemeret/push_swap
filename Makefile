@@ -22,7 +22,7 @@ UTILS=$(addprefix utils/, $(SRC))
 OBJS = ${SRC:.c=.o}
 NORM = norminette
 NAME = push_swap
-COMPIL = gcc -Wall -Wextra -Werror
+COMPIL = gcc -Wall -Wextra -Werror -g
 
 COLOUR_GREEN=\033[0;32m
 COLOUR_BLUE=\033[0;34m

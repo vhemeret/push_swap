@@ -39,3 +39,11 @@ void	*_freedel_(t_Dlist **to_free, int print_error)
 	}
 	return (NULL);
 }
+
+void	cleaning(t_Dlist **stack_a, t_Dlist **stack_b)
+{
+	if (!list_empty(*stack_a))
+		_freedel_(stack_a, 0);
+	if (!list_empty(*stack_b))
+		_freedel_(stack_b, 0);
+}

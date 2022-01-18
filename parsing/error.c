@@ -6,7 +6,7 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 22:14:22 by vahemere          #+#    #+#             */
-/*   Updated: 2022/01/14 00:17:57 by vahemere         ###   ########.fr       */
+/*   Updated: 2022/01/18 15:29:21 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	_manage_arg_error_(int ac, char **av)
 	if (ac == 2)
 	{
 		tab = ft_split(av[1], ' ');
-		if (!_check_arg_(nb_words(av[1], ' '), tab))
+		if (!_check_arg_(nb_words(av[1], ' '), tab, 1))
 		{
 			ft_putstr("Error\n");
 			tab = __free_basic_char__(tab, nb_words(av[1], ' '));
@@ -32,7 +32,7 @@ int	_manage_arg_error_(int ac, char **av)
 	}
 	else
 	{
-		if (!_check_arg_(ac, av))
+		if (!_check_arg_(ac, av, 0))
 		{
 			ft_putstr("Error\n");
 			return (0);

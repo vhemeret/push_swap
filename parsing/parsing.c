@@ -6,18 +6,21 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 00:25:12 by vahemere          #+#    #+#             */
-/*   Updated: 2022/01/14 00:18:04 by vahemere         ###   ########.fr       */
+/*   Updated: 2022/01/18 15:30:30 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	_check_arg_(int ac, char **av)
+int	_check_arg_(int ac, char **av, int type)
 {
 	int	i;
 	int	j;
 
-	i = 0;
+	if (type == 1)
+		i = -1;
+	else
+		i = 0;
 	while (++i < ac)
 	{
 		j = 0;
