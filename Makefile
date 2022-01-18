@@ -6,47 +6,50 @@
 #    By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/08 16:47:47 by vahemere          #+#    #+#              #
-#    Updated: 2022/01/08 16:47:47 by vahemere         ###   ########.fr        #
+#    Updated: 2022/01/19 00:53:33 by vahemere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAIN =		push_swap.c \
+NAME	=	push_swap
+INC		=	push_swap.h
+OBJ_DIR =	objs
+SRC_DIR	=	$(shell find srcs -type d)
 
-SRC =		*.c \
+vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
+SRCS =	push_swap.c \
+		data_list.c list_cleaning.c malloc_Dlist.c manage_list.c \
+		error.c parsing.c \
+		get_info.c manage_algo.c move.c sort_big.c sort_small.c sort_three.c sort_utils_big.c sort_utils.c \
+		free.c ft_atoi.c ft_isdigit.c ft_putstr.c ft_split.c \
 
-LIST=$(addprefix list/, $(SRC))
-PARSING=$(addprefix parsing/, $(SRC))
-SORTING=$(addprefix sorting/, $(SRC))
-UTILS=$(addprefix utils/, $(SRC))
-
-OBJS = ${SRC:.c=.o}
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 NORM = norminette
-NAME = push_swap
-COMPIL = gcc -Wall -Wextra -Werror -g
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
 COLOUR_GREEN=\033[0;32m
-COLOUR_BLUE=\033[0;34m
 COLOUR_END=\033[0m
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "\t$(COLOUR_BLUE)***CREATION EXECUTABLE***$(COLOUR_END)"
-	$(COMPIL) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -I push_swap.h
 	@echo "\n\t$(COLOUR_GREEN)***EXECUTABLE CREATED SUCCESSFULL***\n\n$(COLOUR_END)"
 
-$(OBJS): $(LIST) $(PARSING) $(SORTING) $(UTILS) $(MAIN)
-	@echo "\t$(COLOUR_BLUE)**COMPILING FILES STARTED**$(COLOUR_END)"
-	$(COMPIL) -c $(LIST) $(PARSING) $(SORTING) $(UTILS) $(MAIN)
-	@echo "\n\t$(COLOUR_GREEN)***COMPILING SUCCESSFULL***\n\n$(COLOUR_END)"
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -I push_swap.h
+
+$(OBJ_DIR) :
+	mkdir -p $@
+	@echo "\n\t$(COLOUR_GREEN)OBJECT DIRECTORY CREATED\n\n$(COLOUR_END)"
 
 clean:
-	rm -rf $(OBJS)
-	@echo "\n\t$(COLOUR_GREEN)***DELETE .O SUCCESSFULL***\n\n$(COLOUR_END)"
+	rm -rf $(OBJS) $(OBJ_DIR)
+	@echo "\n\t$(COLOUR_GREEN)DELETE .O SUCCESSFULL\n\n$(COLOUR_END)"
 
 fclean: clean
 	rm -rf $(NAME)
-	@echo "\n\t$(COLOUR_GREEN)***DELETE EXECUTABLE SUCCESSFULL***\n\n$(COLOUR_END)"
+	@echo "\n\t$(COLOUR_GREEN)DELETE EXECUTABLE SUCCESSFULL\n\n$(COLOUR_END)"
 
 norm :
 	@echo "$(COLOUR_GREEN)**CHECK NORM FILES**$(COLOUR_END)"
@@ -54,4 +57,4 @@ norm :
 
 re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean norm re

@@ -6,11 +6,11 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 16:14:32 by vahemere          #+#    #+#             */
-/*   Updated: 2022/01/14 00:18:45 by vahemere         ###   ########.fr       */
+/*   Updated: 2022/01/19 00:10:04 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
 int	_pos_compar_three_(t_Dlist **stack_a)
 {

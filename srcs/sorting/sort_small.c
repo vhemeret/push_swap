@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
 void	_sort_small_(t_Dlist **stack_a, t_Dlist **stack_b)
 {

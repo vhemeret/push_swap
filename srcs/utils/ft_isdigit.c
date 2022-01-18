@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/26 18:38:35 by vahemere          #+#    #+#             */
-/*   Updated: 2022/01/08 01:08:58 by vahemere         ###   ########.fr       */
+/*   Created: 2021/09/30 21:50:35 by vahemere          #+#    #+#             */
+/*   Updated: 2022/01/19 00:10:44 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
-long	ft_atoi(const char *nptr)
+int	ft_isdigit(int c)
 {
-	long	result;
-	long	sign;
-
-	result = 0;
-	sign = 1;
-	while ((*nptr >= 9 && *nptr <= 13) || *nptr == ' ')
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
-	{
-		if (*nptr == '-')
-			sign *= -1;
-		nptr++;
-	}
-	while (ft_isdigit(*nptr))
-	{
-		result = result * 10 + (*nptr - 48);
-		nptr++;
-	}
-	return (sign * result);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

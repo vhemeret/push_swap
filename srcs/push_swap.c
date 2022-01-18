@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	__create_list__(int nb_elem, char **elem, t_Dlist **stack_a, int x)
 {

@@ -6,11 +6,11 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 23:58:11 by vahemere          #+#    #+#             */
-/*   Updated: 2022/01/18 16:24:16 by vahemere         ###   ########.fr       */
+/*   Updated: 2022/01/19 00:10:52 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
 int	is_sep(char s, char c)
 {

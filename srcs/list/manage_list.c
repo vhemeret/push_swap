@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
 t_Dlist	*add_back_lst(t_Dlist **li, int content)
 {

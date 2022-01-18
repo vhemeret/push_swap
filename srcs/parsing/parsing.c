@@ -6,11 +6,11 @@
 /*   By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 00:25:12 by vahemere          #+#    #+#             */
-/*   Updated: 2022/01/18 15:30:30 by vahemere         ###   ########.fr       */
+/*   Updated: 2022/01/19 00:09:34 by vahemere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
 int	_check_arg_(int ac, char **av, int type)
 {

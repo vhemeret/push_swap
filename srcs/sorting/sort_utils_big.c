@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
 t_list	*_find_better_top_t_(t_Dlist **stack_b)
 {
