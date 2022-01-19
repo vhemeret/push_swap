@@ -6,12 +6,11 @@
 #    By: vahemere <vahemere@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/08 16:47:47 by vahemere          #+#    #+#              #
-#    Updated: 2022/01/19 00:53:33 by vahemere         ###   ########.fr        #
+#    Updated: 2022/01/19 16:53:05 by vahemere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	push_swap
-INC		=	push_swap.h
 OBJ_DIR =	objs
 SRC_DIR	=	$(shell find srcs -type d)
 
@@ -33,11 +32,11 @@ COLOUR_END=\033[0m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -I push_swap.h
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 	@echo "\n\t$(COLOUR_GREEN)***EXECUTABLE CREATED SUCCESSFULL***\n\n$(COLOUR_END)"
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@ -I push_swap.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR) :
 	mkdir -p $@
